@@ -1,11 +1,22 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Header from '../components/Header.astro';
+import Carousel from '../components/Carousel.astro';
+import Gallery from '../components/Gallery.astro';
+import ContactForm from '../components/ContactForm.astro';
 ---
 
 <Layout>
-	<Welcome />
+  <Header />
+  <Carousel />
+
+  <section id="sobre-mi" style="padding: 60px 20px;">
+    <h2 data-aos="fade-up" style="text-align: center;">Sobre mí</h2>
+    <p data-aos="fade-up" style="color: #aaa; max-width: 600px; margin: auto; text-align: center;">
+      Soy un artista del tatuaje con más de 5 años de experiencia, especializado en estilos fineline, geométricos y realismo. Cada diseño es una colaboración íntima con el cliente, buscando plasmar historias en la piel con precisión y estilo.
+    </p>
+  </section>
+
+  <Gallery />
+  <ContactForm />
 </Layout>
