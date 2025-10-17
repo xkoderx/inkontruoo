@@ -1,0 +1,61 @@
+---
+const background = "/2.jpg"; // Reemplaza con tu imagen
+---
+
+<style>
+  .parallax {
+    position: relative;
+    height: 100vh;
+    background-image: url('/5.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    color: #fff;
+    max-width: 600px;
+  }
+
+  .overlay h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+  }
+
+  .overlay p {
+    color: #ccc;
+    font-size: 1.2em;
+  }
+
+  .cta-button {
+    margin-top: 20px;
+    padding: 15px 30px;
+    background-color: #fff;
+    color: #000;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+  }
+
+  .cta-button:hover {
+    background-color: #ccc;
+  }
+</style>
+
+<section class="parallax" id="inicio">
+  <div class="overlay" data-aos="fade-up">
+    <h1>Arte que deja huella</h1>
+    <p>Diseños únicos, trazos precisos, tatuajes con alma.</p>
+    <a href="#contacto" class="cta-button">Agenda tu cita</a>
+  </div>
+</section>
