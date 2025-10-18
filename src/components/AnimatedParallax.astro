@@ -1,0 +1,37 @@
+---
+const background = "/7.jpg"; // Asegúrate de que esté en /public
+---
+
+<section
+  id="inicio"
+  class="relative h-screen overflow-hidden bg-black"
+>
+  <!-- Imagen de fondo con movimiento -->
+  <div
+    class="absolute inset-0 bg-cover bg-center will-change-transform transition-transform duration-100 ease-out"
+    style={`background-image: url(${background});`},
+    id="parallax-bg"
+  ></div>
+
+  <!-- Capa oscura y contenido -->
+  <div class="relative z-10 flex h-full items-center justify-center bg-black/60 px-6 text-center">
+    <div data-aos="fade-up">
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Arte que deja huella</h1>
+      <p class="text-gray-300 text-lg md:text-xl mb-6">Diseños únicos, trazos precisos, tatuajes con alma.</p>
+      <a
+        href="#contacto"
+        class="inline-block bg-white text-black font-semibold px-6 py-3 rounded hover:bg-gray-300 transition"
+      >
+        Agenda tu cita
+      </a>
+    </div>
+  </div>
+</section>
+
+<script is:client>
+  const bg = document.getElementById('parallax-bg');
+  window.addEventListener('scroll', () => {
+    const offset = window.scrollY * 0.3;
+    bg.style.transform = `translateY(${offset}px)`;
+  });
+</script>
