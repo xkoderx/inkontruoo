@@ -1,33 +1,143 @@
-<header
-  style="position: fixed; top: 0; width: 100%; background-color: #111; border-bottom: 1px solid #333; z-index: 1000;"
->
-  <div
-    style="max-width: 1200px; margin: 0 auto; padding: 15px 20px; display: flex; align-items: center; justify-content: space-between;"
-  >
-    <!-- Logo -->
-    <div style="display: flex; align-items: center;">
-      <a href="#inicio">
-        <img
-          src="/logo-header.png"
-          alt="Logo del estudio"
-          style="height: 40px; margin-right: 10px;"
-        />
-      </a>
-      <span style="color: #fff; font-weight: bold; font-size: 1.em;"
-        >Tattoo Studio</span
-      >
-    </div>
+---
+const navLinks = [
+  { href: "#inicio", label: "Inicio" },
+  { href: "#sobre-mi", label: "Sobre mí" },
+  { href: "#galeria", label: "Galería" },
+  { href: "#contacto", label: "Contacto" },
+];
+---
 
-    <!-- Navegación -->
-    <nav style="display: flex; gap: 20px;">
-      <a href="#inicio" style="color: #ccc; text-decoration: none;">Inicio</a>
-      <a href="#sobre-mi" style="color: #ccc; text-decoration: none;"
-        >Sobre mí</a
-      >
-      <a href="#galeria" style="color: #ccc; text-decoration: none;">Galería</a>
-      <a href="#contacto" style="color: #ccc; text-decoration: none;"
-        >Contacto</a
-      >
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #111;
+    border-bottom: 1px solid #333;
+    z-index: 1000;
+    transition: top 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo img {
+    height: 40px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 20px;
+  }
+
+  /* .nav a {
+    color: #ccc;
+    text-decoration: none;
+  } */
+
+  /* .nav a:hover {
+    color: #555555;
+    text-decoration: none;
+  } */
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+
+  .hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #ccc;
+  }
+
+  .mobile-nav {
+    display: none;
+    flex-direction: column;
+    background-color: #111;
+    padding: 10px 20px;
+  }
+
+  .mobile-nav a {
+    color: #ccc;
+    text-decoration: none;
+    padding: 10px 0;
+  }
+
+  @media (max-width: 768px) {
+    .nav {
+      display: none;
+    }
+
+    .hamburger {
+      display: flex;
+    }
+
+    .mobile-nav.show {
+      display: flex;
+    }
+  }
+</style>
+
+<header class="header" id="site-header">
+  <div class="container">
+    <div class="logo hover:scale-110">
+      <a href="#inicio">  
+        <img src="/logo-header.png" alt="Logo" />
+        <!-- <span style="color: #fff; font-weight: bold;">Tattoo Studio </span> -->
+      </a>
+      </div>
+
+    <nav class="nav">
+      {navLinks.map(link => (
+        <a class="font-bold hover:scale-110 hover:text-gray-500" href={link.href}>{link.label}</a>
+      ))}
     </nav>
+
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
   </div>
+
+  <div id="mobileMenu" class="mobile-nav">
+    {navLinks.map(link => (
+      <a class="flex justify-center" href={link.href} onclick="toggleMenu()">{link.label}</a>
+    ))}
+  </div>
+
+  <script is:client>
+    let lastScroll = 0;
+    const header = document.getElementById('site-header');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      if (currentScroll > lastScroll && currentScroll > 100) {
+        header.style.top = '-100px'; // Oculta
+      } else {
+        header.style.top = '0'; // Muestra
+      }
+      lastScroll = currentScroll;
+    });
+
+    window.toggleMenu = () => {
+      mobileMenu.classList.toggle('show');
+    };
+  </script>
 </header>
