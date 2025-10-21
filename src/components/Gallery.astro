@@ -1,17 +1,22 @@
 ---
 const images = [
-  { src: "/tattoo1.jpg", alt: "Tatuaje 1" },
-  { src: "/tattoo2.jpg", alt: "Tatuaje 2" },
-  { src: "/tattoo3.jpg", alt: "Tatuaje 3" },
-  { src: "/tattoo4.jpg", alt: "Tatuaje 4" },
+  { src: "/chill-cert.jpg", alt: "Tatuaje 1" },
+  { src: "/domestika-dibujo.jpg", alt: "Tatuaje 2" },
+  { src: "/chill-cert.jpg", alt: "Tatuaje 3" },
 ];
+// const images = [
+//   { src: "/tattoo1.jpg", alt: "Tatuaje 1" },
+//   { src: "/tattoo2.jpg", alt: "Tatuaje 2" },
+//   { src: "/tattoo3.jpg", alt: "Tatuaje 3" },
+//   { src: "/tattoo4.jpg", alt: "Tatuaje 4" },
+// ];
 ---
 
 <section id="galeria" style="padding: 60px 20px;">
-  <h2 data-aos="fade-up" style="color: #fff; text-align: center;">Galería</h2>
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px;">
-    {images.map(image => (
-      <img src={image.src} alt={image.alt} data-aos="zoom-in" style="width: 100%; border-radius: 10px;" />
-    ))}
+    <h2 data-aos="fade-up" style="color: #fff; text-align: center;font-weight:bold;font-size: 2em;">Galería</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px;">
+      {images.map(image => (
+        <img src={image.src} alt={image.alt} data-aos="zoom-in" style="width: 100%; border-radius: 10px;" class="hover:scale-105" />
+      ))}
   </div>
 </section>
