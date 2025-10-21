@@ -1,5 +1,6 @@
 ---
-const { children } = Astro.props;
+import "../styles/global.css";
+import "aos/dist/aos.css";
 ---
 
 <!doctype html>
@@ -10,8 +11,6 @@ const { children } = Astro.props;
     <meta name="description" content="Inkontruoo Tattoo Studio Website" />
     <meta name="generator" content={Astro.generator} />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link href="/src/assets/style.css" rel="stylesheet" />
     <title>Inkontruoo</title>
     <style>
       body {
@@ -21,12 +20,14 @@ const { children } = Astro.props;
         font-family: "Helvetica Neue", sans-serif;
         padding-top: 3.7%;
         overflow-x: hidden;
-      } 
+      }
     </style>
   </head>
   <body>
     <slot />
-    {children}
-    <script type="module" src="/src/scripts/aos-init.js" is:client></script>
+    <script>
+      import AOS from "aos";
+      AOS.init();
+    </script>
   </body>
 </html>
