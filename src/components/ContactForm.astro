@@ -1,9 +1,40 @@
-<section id="contacto" style="padding: 60px 20px;">
-  <h2 data-aos="fade-up" style="color: #fff; text-align: center;">Contacto</h2>
-  <form action="" method="POST" data-aos="fade-up" style="max-width: 600px; margin: 40px auto 0; display: flex; flex-direction: column; gap: 15px;">
-    <input type="text" name="name" placeholder="Tu nombre" required style="padding: 10px; background-color: #111; border: 1px solid #333; color: #fff;" />
-    <input type="email" name="email" placeholder="Tu correo" required style="padding: 10px; background-color: #111; border: 1px solid #333; color: #fff;" />
-    <textarea name="message" placeholder="Tu mensaje" rows="5" required style="padding: 10px; background-color: #111; border: 1px solid #333; color: #fff;"></textarea>
-    <button type="submit" style="padding: 15px 30px; background-color: #fff; color: #000; font-weight: bold; border: none; cursor: pointer;">Enviar mensaje</button>
+---
+// No necesitas lógica aquí a menos que manejes el envío con JavaScript o API
+---
+
+<section class="max-w-xl mx-auto mt-16 px-6" data-aos="fade-up">
+  <h2 class="text-2xl font-semibold text-center mb-6 text-black dark:text-white">Agenda una cita</h2>
+  <form
+    action="mailto:erickmichele@outlook.com"
+    method="POST"
+    class="space-y-4 bg-white p-6 rounded-lg shadow-md"
+  >
+    <input
+      type="text"
+      name="nombre"
+      placeholder="Tu nombre"
+      required
+      class="w-full text-black px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+    <input
+      type="email"
+      name="email"
+      placeholder="Tu correo electrónico"
+      required
+      class="w-full text-black px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+    <textarea
+      name="mensaje"
+      placeholder="Escribe tu mensaje..."
+      rows="5"
+      required
+      class="w-full text-black px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+    ></textarea>
+    <button
+      type="submit"
+      class="w-full bg-gray-900 text-white py-2 rounded-md hover:bg-black transition-colors"
+    >
+      Enviar
+    </button>
   </form>
 </section>
