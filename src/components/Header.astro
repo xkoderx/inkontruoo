@@ -54,6 +54,49 @@ import Darktheme from "./Darktheme.astro";
         >
       </nav>
       <Darktheme />
+      <button
+        id="hamburger"
+        class="md:hidden flex flex-col justify-center gap-1.5 p-2"
+        aria-label="Abrir menú"
+        onclick="toggleMenu()"
+      >
+        <span class="block h-0.5 w-6 bg-black dark:bg-white"></span>
+        <span class="block h-0.5 w-6 bg-black dark:bg-white"></span>
+        <span class="block h-0.5 w-6 bg-black dark:bg-white"></span>
+      </button>
+    </div>
+
+    <!-- Menú móvil -->
+    <div
+      id="mobileMenu"
+      class="hidden md:hidden bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 shadow-md"
+    >
+      <nav class="flex flex-col px-4 py-2">
+        <a
+          href="#inicio"
+          onclick="toggleMenu()"
+          class="py-3 text-center font-sans text-black dark:text-white hover:underline"
+          >Inicio</a
+        >
+        <a
+          href="#sobre-mi"
+          onclick="toggleMenu()"
+          class="py-3 text-center font-sans text-black dark:text-white hover:underline"
+          >Sobre mí</a
+        >
+        <a
+          href="#galeria"
+          onclick="toggleMenu()"
+          class="py-3 text-center font-sans text-black dark:text-white hover:underline"
+          >Galería</a
+        >
+        <a
+          href="#contacto"
+          onclick="toggleMenu()"
+          class="py-3 text-center font-sans text-black dark:text-white hover:underline"
+          >Contacto</a
+        >
+      </nav>
     </div>
   </div>
 </header>
@@ -101,4 +144,9 @@ import Darktheme from "./Darktheme.astro";
       logoAlt.classList.remove("opacity-100");
     }
   });
+</script>
+<script is:client>
+  window.toggleMenu = () => {
+    document.getElementById("mobileMenu")?.classList.toggle("hidden");
+  };
 </script>
