@@ -1,0 +1,123 @@
+---
+import { Image } from "astro:assets";
+import image1 from "../assets/img/carousel/1.jpg";
+import image2 from "../assets/img/carousel/2.jpg";
+import image3 from "../assets/img/carousel/3.jpg";
+import image4 from "../assets/img/carousel/4.jpg";
+import image5 from "../assets/img/carousel/5.jpg";
+
+const slides = [
+  { image: image1, alt: "Máquina de tatuar en acción" },
+  { image: image2, alt: "Máquina de tatuar sobre la mesa de trabajo" },
+  { image: image3, alt: "Artista tatuando un brazo" },
+  { image: image4, alt: "Tatuaje a color con flores y motivos orientales" },
+  { image: image5, alt: "Persona mostrando un tatuaje de estilo tradicional" },
+];
+---
+
+<section id="inicio" class="relative isolate h-[clamp(34rem,88svh,56rem)] min-h-[70svh] w-full overflow-hidden bg-neutral-950" data-carousel>
+  <div class="absolute inset-0" data-carousel-slides>
+    {slides.map(({ image, alt }, index) => (
+      <div
+        class:list={[
+          "absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out",
+          { "z-10 opacity-100": index === 0 },
+        ]}
+        data-carousel-item
+        data-aos="fade"
+        data-aos-duration="900"
+        data-aos-easing="ease-out-cubic"
+        data-aos-once="false"
+        aria-hidden={index !== 0}
+      >
+        <Image src={image} alt={alt} class="h-full w-full object-cover object-center" loading={index === 0 ? "eager" : "lazy"} />
+      </div>
+    ))}
+  </div>
+
+  <!-- Contenido del hero (estilo Haircut: overlay oscuro, título grande, CTA) -->
+  <div class="pointer-events-none absolute inset-0 z-20 flex items-center justify-center bg-black/60">
+    <div class="pointer-events-auto mx-auto max-w-[900px] px-5 text-center" data-aos="fade-up">
+      <p class="mb-4 font-display text-sm uppercase tracking-[0.35em] text-brand md:text-base">
+        Inkontruoo &middot; Tattoo Studio
+      </p>
+      <h1 class="font-display text-5xl font-semibold uppercase leading-[1.2] text-white md:text-7xl">
+        Arte que deja huella
+      </h1>
+      <p class="mx-auto mt-4 max-w-xl text-lg text-gray-300 md:text-xl">
+        Diseños únicos, trazos precisos, tatuajes con alma.
+      </p>
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+        <a
+          href="#contacto"
+          class="bg-brand px-8 py-3 font-display text-base font-semibold uppercase tracking-wide text-white transition-colors hover:bg-[#c81212]"
+        >
+          Agenda tu cita
+        </a>
+        <a
+          href="#galeria"
+          class="border border-white px-8 py-3 font-display text-base font-semibold uppercase tracking-wide text-white transition-colors hover:bg-white hover:text-black"
+        >
+          Ver galería
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <button type="button" class="group absolute start-3 top-1/2 z-30 hidden -translate-y-1/2 rounded-full p-3 text-white transition hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-white sm:start-6 sm:block" data-carousel-prev aria-label="Imagen anterior">
+    <span class="sr-only">Imagen anterior</span>
+    <svg class="h-7 w-7 transition-transform group-hover:-translate-x-1" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m15 19-7-7 7-7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" /></svg>
+  </button>
+  <button type="button" class="group absolute end-3 top-1/2 z-30 hidden -translate-y-1/2 rounded-full p-3 text-white transition hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-white sm:end-6 sm:block" data-carousel-next aria-label="Imagen siguiente">
+    <span class="sr-only">Imagen siguiente</span>
+    <svg class="h-7 w-7 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 5 7 7-7 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" /></svg>
+  </button>
+
+  <div class="absolute inset-x-0 bottom-0 z-30 flex items-center justify-center gap-2 p-6" role="tablist" aria-label="Seleccionar imagen">
+    {slides.map((_, index) => (
+      <button type="button" class:list={["h-1.5 rounded-full transition-all duration-300", index === 0 ? "w-9 bg-white" : "w-5 bg-white/50 hover:bg-white/80"]} aria-label={`Ver imagen ${index + 1}`} aria-current={index === 0 ? "true" : "false"} data-carousel-slide-to={index}></button>
+    ))}
+  </div>
+</section>
+
+<script>
+  const carousels = document.querySelectorAll<HTMLElement>("[data-carousel]");
+
+  carousels.forEach((carousel) => {
+    const slides = Array.from(carousel.querySelectorAll<HTMLElement>("[data-carousel-item]"));
+    const indicators = Array.from(carousel.querySelectorAll<HTMLButtonElement>("[data-carousel-slide-to]"));
+    let activeIndex = 0;
+    let autoplay: ReturnType<typeof setInterval>;
+
+    const showSlide = (nextIndex: number) => {
+      activeIndex = (nextIndex + slides.length) % slides.length;
+      slides.forEach((slide, index) => {
+        slide.classList.remove("aos-animate");
+        slide.classList.toggle("z-10", index === activeIndex);
+        slide.classList.toggle("opacity-100", index === activeIndex);
+        slide.setAttribute("aria-hidden", String(index !== activeIndex));
+      });
+      void slides[activeIndex].offsetWidth;
+      slides[activeIndex].classList.add("aos-animate");
+      indicators.forEach((indicator, index) => {
+        indicator.setAttribute("aria-current", String(index === activeIndex));
+        indicator.classList.toggle("w-9", index === activeIndex);
+        indicator.classList.toggle("w-5", index !== activeIndex);
+        indicator.classList.toggle("bg-white", index === activeIndex);
+        indicator.classList.toggle("bg-white/50", index !== activeIndex);
+      });
+    };
+
+    const restartAutoplay = () => {
+      clearInterval(autoplay);
+      autoplay = setInterval(() => showSlide(activeIndex + 1), 5500);
+    };
+
+    carousel.querySelector<HTMLButtonElement>("[data-carousel-prev]")?.addEventListener("click", () => { showSlide(activeIndex - 1); restartAutoplay(); });
+    carousel.querySelector<HTMLButtonElement>("[data-carousel-next]")?.addEventListener("click", () => { showSlide(activeIndex + 1); restartAutoplay(); });
+    indicators.forEach((indicator) => indicator.addEventListener("click", () => { showSlide(Number(indicator.dataset.carouselSlideTo)); restartAutoplay(); }));
+    carousel.addEventListener("mouseenter", () => clearInterval(autoplay));
+    carousel.addEventListener("mouseleave", restartAutoplay);
+    restartAutoplay();
+  });
+</script>

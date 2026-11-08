@@ -10,20 +10,29 @@ const images = Object.entries(
 ) as [string, ImageMetadata][];
 ---
 
-<section id="galeria" class="px-16 py-5">
-  <h2 data-aos="fade-up" class="text-center text-[3em] font-bold text-black">
-    Galería
-  </h2>
-  <div class="mt-8 columns-1 gap-x-5 sm:columns-2 md:columns-3 lg:columns-4">
-    {
-      images.map(([imagePath, image]) => (
-        <Image
-          src={image}
-          alt={`Tatuaje de ${imagePath.split("/").pop()?.split(".")[0]}`}
-          data-aos="zoom-in"
-          class="mb-5 block h-auto w-full break-inside-avoid rounded-[10px] hover:scale-105"
-        />
-      ))
-    }
+<section id="galeria" class="py-12 px-4">
+  <div class="mx-auto max-w-7xl">
+    <!-- Cabecera centrada estilo Haircut -->
+    <div class="mx-auto mb-12 max-w-[600px] text-center" data-aos="fade-up">
+      <p class="inline-block bg-ink px-4 py-1 font-display text-base uppercase tracking-wider text-brand">
+        Galería
+      </p>
+      <h1 class="mt-4 font-display text-4xl font-semibold uppercase leading-[1.2] text-white md:text-5xl">
+        Nuestros trabajos
+      </h1>
+    </div>
+
+    <div class="columns-1 gap-x-5 sm:columns-2 md:columns-3 lg:columns-4">
+      {
+        images.map(([imagePath, image]) => (
+          <Image
+            src={image}
+            alt={`Tatuaje de ${imagePath.split("/").pop()?.split(".")[0]}`}
+            data-aos="zoom-in"
+            class="mb-5 block h-auto w-full break-inside-avoid transition-transform duration-300 hover:scale-105"
+          />
+        ))
+      }
+    </div>
   </div>
 </section>
