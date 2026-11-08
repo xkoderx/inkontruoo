@@ -28,10 +28,10 @@ const background = "/1.jpg"; // Asegúrate de que esté en /public
   </div>
 </section>
 
-<script is:client>
+<script>
   const bg = document.getElementById('parallax-bg');
   window.addEventListener('scroll', () => {
     const offset = window.scrollY * 0.3;
-    bg.style.transform = `translateY(${offset}px)`;
+    bg!.style.transform = `translateY(${offset}px)`;
   });
 </script>

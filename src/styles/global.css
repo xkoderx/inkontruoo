@@ -1,7 +1,4 @@
 @import "tailwindcss";
-@import "flowbite/src/themes/default";
-/* @plugin "flowbite/plugin";
-@source "../../node_modules/flowbite"; */
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 @font-face {
     font-family: 'Gotham';

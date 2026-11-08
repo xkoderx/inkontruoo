@@ -1,6 +1,7 @@
 ---
 import Darktheme from "./Darktheme.astro";
 ---
+
 <header class="fixed top-0 left-0 w-full z-50">
   <!-- Fondo dinámico -->
   <div id="header-bg" class="h-18 transition-all duration-300"></div>
@@ -16,9 +17,9 @@ import Darktheme from "./Darktheme.astro";
           class="absolute inset-0 flex items-center justify-start transition-opacity duration-300 opacity-100 gap-6"
         >
           <img src="logo-header.png" alt="Ink Icon" class="h-12" />
-          <a class="text-l truncate font-bold text-black dark:text-white"
-            >Tattoo Studio </a
-          >
+          <a class="text-l truncate font-sans text-black dark:text-white"
+            >Tattoo Studio
+          </a>
         </div>
 
         <!-- Logo alternativo (visible al hacer scroll) -->
@@ -34,25 +35,25 @@ import Darktheme from "./Darktheme.astro";
       <nav class="hidden md:flex space-x-6">
         <a
           href="#inicio"
-          class="font-bold text-black dark:text-white hover:underline">Inicio</a
+          class="font-sans text-black dark:text-white hover:underline">Inicio</a
         >
         <a
           href="#sobre-mi"
-          class="font-bold text-black dark:text-white hover:underline"
+          class="font-sans text-black dark:text-white hover:underline"
           >Sobre mí</a
         >
         <a
           href="#galeria"
-          class="font-bold text-black dark:text-white hover:underline"
+          class="font-sans text-black dark:text-white hover:underline"
           >Galería</a
         >
         <a
           href="#contacto"
-          class="font-bold text-black dark:text-white hover:underline"
+          class="font-sans text-black dark:text-white hover:underline"
           >Contacto</a
         >
       </nav>
-      <Darktheme/>
+      <Darktheme />
     </div>
   </div>
 </header>
