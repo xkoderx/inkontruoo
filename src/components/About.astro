@@ -1,3 +1,7 @@
+---
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
+---
+
 <!-- About estilo Haircut: foto a la izquierda con caja superpuesta, texto a la derecha -->
 
 <section id="sobre-mi" class="py-12">
@@ -6,9 +10,9 @@
       <!-- Foto + caja superpuesta -->
       <div class="flex flex-col" data-aos="fade-right">
         <img
-          src="inkontruoo/mee.jpg"
+          src={base + "mee.jpg"}
           alt="Erick Michel Deloera tatuando"
-          class="w-3/4 self-end object-cover"
+          class="w-3/4 self-end rounded-lg object-cover"
         />
         <div class="w-1/2 -mt-[25%] bg-ink p-8" data-aos="fade-up">
           <p class="font-display text-4xl font-semibold uppercase leading-[1.2] text-brand md:text-5xl">
