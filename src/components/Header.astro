@@ -1,151 +1,90 @@
 ---
-import Darktheme from "./Darktheme.astro";
+const navLinks = [
+  { href: "#inicio", label: "Inicio" },
+  { href: "#sobre-mi", label: "Sobre mí" },
+  { href: "#servicios", label: "Servicios" },
+  { href: "#galeria", label: "Galería" },
+  { href: "#contacto", label: "Contacto" },
+];
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 ---
 
-<header class="fixed top-0 left-0 w-full z-50">
-  <!-- Fondo dinámico -->
-  <div id="header-bg" class="h-18 transition-all duration-300"></div>
+<header id="site-header" class="fixed left-0 top-0 z-50 w-full bg-ink transition-shadow duration-300">
+  <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 lg:px-5">
+    <!-- Logo -->
+    <a href="#inicio" class="flex items-center gap-3">
+      <img src={base + "logo-header.png"} alt="Inkontruoo" class="h-10" />
+      <span class="font-display text-lg uppercase tracking-widest text-white">Tattoo Studio</span>
+    </a>
 
-  <!-- Contenido fijo -->
-  <div class="fixed top-0 left-0 w-full">
-    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-      <!-- Contenedor del logo -->
-      <div class="relative h-10 w-32">
-        <!-- Logo principal (visible al inicio) -->
-        <div
-          id="logo-main"
-          class="absolute inset-0 flex items-center justify-start transition-opacity duration-300 opacity-100 gap-6"
-        >
-          <img src="logo-header.png" alt="Ink Icon" class="h-12" />
-          <a class="text-l truncate font-sans text-black dark:text-white"
-            >Tattoo Studio
+    <!-- Navegación escritorio -->
+    <nav class="hidden items-center lg:flex">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="mr-[30px] font-display text-[18px] font-semibold uppercase text-smoke transition-colors hover:text-brand"
+          >
+            {link.label}
           </a>
-        </div>
-
-        <!-- Logo alternativo (visible al hacer scroll) -->
-        <div
-          id="logo-alt"
-          class="absolute inset-0 flex items-center justify-start transition-opacity duration-300 opacity-0"
-        >
-          <img src="favicon.ico" alt="Ink Icon" class="h-12" />
-        </div>
-      </div>
-
-      <!-- Navegación -->
-      <nav class="hidden md:flex space-x-6">
-        <a
-          href="#inicio"
-          class="font-sans text-black dark:text-white hover:underline">Inicio</a
-        >
-        <a
-          href="#sobre-mi"
-          class="font-sans text-black dark:text-white hover:underline"
-          >Sobre mí</a
-        >
-        <a
-          href="#galeria"
-          class="font-sans text-black dark:text-white hover:underline"
-          >Galería</a
-        >
-        <a
-          href="#contacto"
-          class="font-sans text-black dark:text-white hover:underline"
-          >Contacto</a
-        >
-      </nav>
-      <Darktheme />
-      <button
-        id="hamburger"
-        class="md:hidden flex flex-col justify-center gap-1.5 p-2"
-        aria-label="Abrir menú"
-        onclick="toggleMenu()"
+        ))
+      }
+      <a
+        href="#contacto"
+        class="hidden bg-brand px-6 py-2.5 font-display text-base font-semibold uppercase tracking-wide text-white transition-colors hover:bg-[#c81212] lg:inline-flex lg:items-center"
       >
-        <span class="block h-0.5 w-6 bg-black dark:bg-white"></span>
-        <span class="block h-0.5 w-6 bg-black dark:bg-white"></span>
-        <span class="block h-0.5 w-6 bg-black dark:bg-white"></span>
-      </button>
-    </div>
+        Agenda tu cita
+        <span class="ml-3" aria-hidden="true">&rarr;</span>
+      </a>
+    </nav>
 
-    <!-- Menú móvil -->
-    <div
-      id="mobileMenu"
-      class="hidden md:hidden bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 shadow-md"
+    <!-- Hamburguesa móvil -->
+    <button
+      id="hamburger"
+      class="flex flex-col justify-center gap-1.5 p-2 lg:hidden"
+      aria-label="Abrir menú"
+      onclick="toggleMenu()"
     >
-      <nav class="flex flex-col px-4 py-2">
-        <a
-          href="#inicio"
-          onclick="toggleMenu()"
-          class="py-3 text-center font-sans text-black dark:text-white hover:underline"
-          >Inicio</a
-        >
-        <a
-          href="#sobre-mi"
-          onclick="toggleMenu()"
-          class="py-3 text-center font-sans text-black dark:text-white hover:underline"
-          >Sobre mí</a
-        >
-        <a
-          href="#galeria"
-          onclick="toggleMenu()"
-          class="py-3 text-center font-sans text-black dark:text-white hover:underline"
-          >Galería</a
-        >
-        <a
-          href="#contacto"
-          onclick="toggleMenu()"
-          class="py-3 text-center font-sans text-black dark:text-white hover:underline"
-          >Contacto</a
-        >
-      </nav>
-    </div>
+      <span class="block h-0.5 w-6 bg-white"></span>
+      <span class="block h-0.5 w-6 bg-white"></span>
+      <span class="block h-0.5 w-6 bg-white"></span>
+    </button>
+  </div>
+
+  <!-- Menú móvil -->
+  <div id="mobileMenu" class="hidden border-t border-white/10 bg-ink shadow-md lg:hidden">
+    <nav class="flex flex-col px-4 py-2">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            onclick="toggleMenu()"
+            class="py-3 text-center font-display text-lg font-semibold uppercase text-white transition-colors hover:text-brand"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <a
+        href="#contacto"
+        onclick="toggleMenu()"
+        class="mx-auto my-2 bg-brand px-6 py-2.5 font-display text-base font-semibold uppercase tracking-wide text-white"
+      >
+        Agenda tu cita
+      </a>
+    </nav>
   </div>
 </header>
-<script is:client>
-  const headerBg = document.getElementById("header-bg");
-  let lastScroll = 0;
 
-  const setHeaderStyle = (scrollY) => {
-    if (scrollY <= 10) {
-      // Parte superior: fondo sólido según tema
-      headerBg.className =
-        "h-16 transition-all duration-300 bg-white dark:bg-black";
-    } else {
-      // Scroll hacia abajo: fondo transparente con desenfoque
-      headerBg.className =
-        "h-16 transition-all duration-300 bg-white/60 dark:bg-black/60 backdrop-blur-md shadow-md";
-    }
+<script is:client>
+  const header = document.getElementById("site-header");
+  const onScroll = () => {
+    header?.classList.toggle("shadow-lg", window.scrollY > 10);
   };
+  window.addEventListener("scroll", onScroll);
+  onScroll();
 
-  window.addEventListener("scroll", () => {
-    const scrollY = window.scrollY;
-    setHeaderStyle(scrollY);
-    lastScroll = scrollY;
-  });
-
-  // Inicializa al cargar
-  setHeaderStyle(window.scrollY);
-</script>
-<script is:client>
-  const logoMain = document.getElementById("logo-main");
-  const logoAlt = document.getElementById("logo-alt");
-
-  window.addEventListener("scroll", () => {
-    const scrollY = window.scrollY;
-
-    if (scrollY > 50) {
-      logoMain.classList.add("opacity-0");
-      logoMain.classList.remove("opacity-100");
-      logoAlt.classList.add("opacity-100");
-      logoAlt.classList.remove("opacity-0");
-    } else {
-      logoMain.classList.add("opacity-100");
-      logoMain.classList.remove("opacity-0");
-      logoAlt.classList.add("opacity-0");
-      logoAlt.classList.remove("opacity-100");
-    }
-  });
-</script>
-<script is:client>
   window.toggleMenu = () => {
     document.getElementById("mobileMenu")?.classList.toggle("hidden");
   };

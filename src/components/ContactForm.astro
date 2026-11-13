@@ -1,44 +1,57 @@
----
-// No necesitas lógica aquí a menos que manejes el envío con JavaScript o API
----
+<!-- Formulario de contacto: envía por mailto a erickmichele@outlook.com -->
 
-<section id="contacto" class="max-w-xl mx-auto mt-16 px-6" data-aos="fade-up">
-  <h2
-    class="text-2xl font-semibold text-center mb-6 text-black dark:text-white"
-  >
-    Agenda una cita
-  </h2>
-  <form
-    action="mailto:erickmichele@outlook.com"
-    method="POST"
-    class="space-y-4 bg-white p-6 rounded-lg shadow-md"
-  >
-    <input
-      type="text"
-      name="nombre"
-      placeholder="Tu nombre"
-      required
-      class="w-full text-black px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-    />
-    <input
-      type="email"
-      name="email"
-      placeholder="Tu correo electrónico"
-      required
-      class="w-full text-black px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-    />
-    <textarea
-      name="mensaje"
-      placeholder="Escribe tu mensaje..."
-      rows="5"
-      required
-      class="w-full text-black px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-    ></textarea>
-    <button
-      type="submit"
-      class="w-full bg-gray-900 text-white py-2 rounded-md hover:bg-black transition-colors"
+<section id="contacto" class="py-12 px-4">
+  <div class="mx-auto max-w-7xl">
+    <!-- Cabecera centrada estilo Haircut -->
+    <div class="mx-auto mb-12 max-w-[600px] text-center" data-aos="fade-up">
+      <p class="inline-block bg-ink px-4 py-1 font-display text-base uppercase tracking-wider text-brand">
+        Contacto
+      </p>
+      <h1 class="mt-4 font-display text-4xl font-semibold uppercase leading-[1.2] text-white md:text-5xl">
+        Agenda tu cita
+      </h1>
+      <p class="mt-4 text-smoke">
+        Escríbenos a
+        <a href="mailto:erickmichele@outlook.com" class="text-brand hover:underline">
+          erickmichele@outlook.com
+        </a>
+        o llena el formulario y te contactamos.
+      </p>
+    </div>
+
+    <form
+      action="mailto:erickmichele@outlook.com"
+      method="POST"
+      class="mx-auto max-w-xl space-y-4 bg-ink p-6 md:p-8"
+      data-aos="fade-up"
     >
-      Enviar
-    </button>
-  </form>
+      <input
+        type="text"
+        name="nombre"
+        placeholder="Tu nombre"
+        required
+        class="w-full border border-white/10 bg-black px-4 py-3 text-white placeholder:text-smoke focus:outline-none focus:ring-2 focus:ring-brand"
+      />
+      <input
+        type="email"
+        name="email"
+        placeholder="Tu correo electrónico"
+        required
+        class="w-full border border-white/10 bg-black px-4 py-3 text-white placeholder:text-smoke focus:outline-none focus:ring-2 focus:ring-brand"
+      />
+      <textarea
+        name="mensaje"
+        placeholder="Escribe tu mensaje..."
+        rows="5"
+        required
+        class="w-full border border-white/10 bg-black px-4 py-3 text-white placeholder:text-smoke focus:outline-none focus:ring-2 focus:ring-brand"
+      ></textarea>
+      <button
+        type="submit"
+        class="w-full bg-brand py-3 font-display text-base font-semibold uppercase tracking-wide text-white transition-colors hover:bg-[#c81212]"
+      >
+        Enviar
+      </button>
+    </form>
+  </div>
 </section>

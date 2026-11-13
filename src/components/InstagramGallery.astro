@@ -1,0 +1,74 @@
+---
+import { Image } from "astro:assets";
+import imgFineline from "../assets/img/tattoos/IMG_0191.jpg";
+import imgTradicional from "../assets/img/tattoos/IMG_20251006_123710_687.webp";
+import imgLettering from "../assets/img/tattoos/20250504_013951.jpg";
+import imgPizza from "../assets/img/tattoos/IMG-20251003-WA0008.jpg";
+import imgGato from "../assets/img/tattoos/20231204_221602.jpg";
+import imgCaricaturas from "../assets/img/tattoos/FB_IMG_1759508813465.jpg";
+
+// Galería de Instagram estilo Alime (Colorlib): 6 fotos, overlay rojo al hover
+// con icono de Instagram. Enlaces al perfil real: https://instagram.com/inkontruoo
+const photos = [
+  { src: imgFineline, alt: "Tatuaje fineline en la espalda" },
+  { src: imgTradicional, alt: "Tatuaje tradicional de rostro" },
+  { src: imgLettering, alt: "Tatuaje de lettering Rivera" },
+  { src: imgPizza, alt: "Tatuaje de pizza calavera a color" },
+  { src: imgGato, alt: "Tatuaje fineline de un gato" },
+  { src: imgCaricaturas, alt: "Tatuaje de caricaturas en el antebrazo" },
+];
+---
+
+<section id="instagram" class="py-12">
+  <div class="mx-auto max-w-7xl px-4 lg:px-5">
+    <!-- Cabecera estilo Alime -->
+    <div class="mx-auto mb-12 max-w-[600px] text-center" data-aos="fade-up">
+      <h2 class="font-display text-4xl uppercase leading-[1.2] text-white md:text-[36px]">
+        Síguenos en Instagram
+      </h2>
+      <p class="mt-2 text-smoke">Trabajos recientes del estudio</p>
+    </div>
+  </div>
+
+  <!-- Feed estilo Alime: 2 / 3 / 6 columnas, zoom + overlay al hover -->
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
+    {
+      photos.map((photo, index) => (
+        <div
+          class="group relative overflow-hidden"
+          data-aos="fade-up"
+          data-aos-delay={index * 50}
+        >
+          <Image
+            src={photo.src}
+            alt={photo.alt}
+            class="aspect-square w-full object-cover transition-transform duration-[1500ms] group-hover:scale-110"
+          />
+          <a
+            href="https://instagram.com/inkontruoo"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Ver en Instagram"
+            class="absolute inset-0 flex flex-col items-center justify-center bg-brand/90 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+          >
+            <svg
+              class="mb-[15px] h-8 w-8 text-white"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <rect x="2" y="2" width="20" height="20" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
+            </svg>
+            <span class="text-sm text-white">Ver en Instagram</span>
+          </a>
+        </div>
+      ))
+    }
+  </div>
+</section>
