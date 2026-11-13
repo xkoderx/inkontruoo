@@ -52,13 +52,9 @@ npm run preview  # vista previa de esa versión final
 
 ## Cómo se publica
 
-El sitio vive en https://xkoderx.github.io/inkontruoo/ y se publica a mano (método manual de GitHub Pages):
+El sitio vive en https://xkoderx.github.io/inkontruoo/ y se publica solo con GitHub Actions: cada vez que subes cambios a la rama `main`, GitHub construye el sitio y lo publica automáticamente. Ya no hay que copiar nada a `docs/`.
 
-```sh
-npm run build    # genera la carpeta dist/
-```
-
-Luego se copia el contenido de `dist/` a la carpeta `docs/` de la rama `main` y se sube. GitHub Pages publica desde `main`, carpeta `/docs`.
+El workflow está en `.github/workflows/deploy.yml` (Node 20, `npm ci`, `npm run build` y publicación con `deploy-pages`).
 
 Para que el sitio cargue bien bajo la ruta `/inkontruoo/`, el proyecto tiene `site` y `base: '/inkontruoo'` en `astro.config.mjs`, y un archivo vacío `public/.nojekyll` para que GitHub Pages no esconda las carpetas que empiezan con guion bajo, como `_astro`.
 
