@@ -1,0 +1,63 @@
+---
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
+---
+
+<!-- About estilo Haircut: foto a la izquierda con caja superpuesta, texto a la derecha -->
+
+<section id="sobre-mi" class="py-12">
+  <div class="mx-auto max-w-7xl px-4 lg:px-5">
+    <div class="grid items-start gap-12 lg:grid-cols-2">
+      <!-- Foto + caja superpuesta -->
+      <div class="flex flex-col" data-aos="fade-right">
+        <img
+          src={base + "mee.jpg"}
+          alt="Erick Michel Deloera tatuando"
+          class="w-3/4 self-end rounded-lg object-cover"
+        />
+        <div class="w-1/2 -mt-[25%] bg-ink p-8" data-aos="fade-up">
+          <p class="font-display text-4xl font-semibold uppercase leading-[1.2] text-brand md:text-5xl">
+            5+ Años
+          </p>
+          <p class="font-display text-2xl uppercase text-white">Experiencia</p>
+        </div>
+      </div>
+
+      <!-- Texto -->
+      <div data-aos="fade-up">
+        <p class="inline-block bg-ink px-4 py-1 font-display text-base uppercase tracking-wider text-brand">
+          Sobre mí
+        </p>
+        <h1 class="mt-4 font-display text-4xl font-semibold uppercase leading-[1.2] text-white md:text-5xl">
+          Más que un tatuaje: historias en la piel
+        </h1>
+        <p class="mt-6 leading-relaxed text-smoke">
+          Soy un artista del tatuaje con más de 5 años de experiencia,
+          especializado en estilos fineline, geométricos y realismo.
+        </p>
+        <p class="mt-4 leading-relaxed text-smoke">
+          Cada diseño es una colaboración íntima con el cliente, buscando plasmar
+          historias en la piel con precisión y estilo.
+        </p>
+
+        <!-- Estadísticas reales -->
+        <div class="mt-8 grid grid-cols-2 gap-6">
+          <div>
+            <h3 class="font-display text-3xl uppercase text-white">56 Diseños</h3>
+            <p class="mt-1 text-smoke">en la galería</p>
+          </div>
+          <div>
+            <h3 class="font-display text-3xl uppercase text-white">3 Estilos</h3>
+            <p class="mt-1 text-smoke">fineline, geométrico y realismo</p>
+          </div>
+        </div>
+
+        <a
+          href="#contacto"
+          class="mt-8 inline-block bg-brand px-6 py-3 font-display text-base font-semibold uppercase tracking-wide text-white transition-colors hover:bg-[#c81212]"
+        >
+          Contáctame
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

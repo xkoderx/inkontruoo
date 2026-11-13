@@ -1,1 +1,20 @@
 @import "tailwindcss";
+
+@theme {
+  /* Paleta de la plantilla Haircut (HTML Codex) */
+  --color-brand: #eb1616;
+  --color-ink: #191c24;
+  --color-smoke: #6c7293;
+
+  /* Tipografías de la plantilla Haircut */
+  --font-display: "Oswald", sans-serif;
+  --font-sans: "Roboto", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #000;
+}

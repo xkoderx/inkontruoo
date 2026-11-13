@@ -1,22 +1,24 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Gallery from '../components/Gallery.astro';
-import ContactForm from '../components/ContactForm.astro';
-import AnimatedParallax from '../components/AnimatedParallax.astro';
-
-
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import Formation from "../components/Formation.astro";
+import Services from "../components/Services.astro";
+import Gallery from "../components/Gallery.astro";
+import InstagramGallery from "../components/InstagramGallery.astro";
+import ContactForm from "../components/ContactForm.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout>
   <Header />
-  <AnimatedParallax />
-  <section id="sobre-mi" style="padding: 60px 20px;">
-    <h2 data-aos="fade-up" style="text-align: center;">Sobre mí</h2>
-    <p data-aos="fade-up" style="color: #aaa; max-width: 600px; margin: auto; text-align: center;">
-      Soy un artista del tatuaje con más de 5 años de experiencia, especializado en estilos fineline, geométricos y realismo. Cada diseño es una colaboración íntima con el cliente, buscando plasmar historias en la piel con precisión y estilo.
-    </p>
-  </section>
+  <Hero />
+  <About />
+  <Formation />
+  <Services />
   <Gallery />
+  <InstagramGallery />
   <ContactForm />
+  <Footer />
 </Layout>

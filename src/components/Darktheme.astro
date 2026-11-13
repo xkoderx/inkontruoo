@@ -1,0 +1,20 @@
+---
+import { ThemeSwitch } from "astro-color-scheme";
+---
+
+<div class="fixed bottom-4 right-4 z-50">
+  <ThemeSwitch strategy="checkbox">
+    <label class="flex items-center cursor-pointer">
+      <!-- Switch -->
+      <div class="relative">
+        <input type="checkbox" class="sr-only peer" />
+        <div class="w-11 h-6 bg-gray-300 dark:bg-gray-600 rounded-full peer peer-checked:bg-blue-500 transition-colors duration-300"></div>
+        <div
+          class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow-md transition-all duration-300 peer-checked:translate-x-5"
+        ></div>
+      </div>
+      <!-- Label text -->
+      <span class="ml-3 text-sm font-medium text-gray-700 dark:text-gray-300">Modo oscuro</span>
+    </label>
+  </ThemeSwitch>
+</div>

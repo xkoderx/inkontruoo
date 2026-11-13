@@ -1,0 +1,62 @@
+---
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
+
+const certificates = [
+  {
+    src: "chill-cert.jpg",
+    alt: "Certificado de asistencia al seminario de tatuaje a color impartido por Víctor Chil",
+    title: "Seminario de tatuaje a color",
+    detail:
+      "Impartido por Víctor Chil · 22 de diciembre de 2024 · Tatuaje realizado: “Freddy Krueger”",
+  },
+  {
+    src: "domestika-dibujo.jpg",
+    alt: "Certificado del curso online Retrato realista con lápiz de grafito en Domestika",
+    title: "Retrato realista con lápiz de grafito",
+    detail:
+      "Curso online en Domestika con Diego Catalán Amilivia · 17 de julio de 2025",
+  },
+];
+---
+
+<!-- Mi formación: cursos y seminarios que respaldan el trabajo de Erick -->
+
+<section id="formacion" class="py-12">
+  <div class="mx-auto max-w-7xl px-4 lg:px-5">
+    <!-- Cabecera centrada estilo Haircut -->
+    <div class="mx-auto mb-12 max-w-[600px] text-center" data-aos="fade-up">
+      <p class="inline-block bg-ink px-4 py-1 font-display text-base uppercase tracking-wider text-brand">
+        Formación
+      </p>
+      <h1 class="mt-4 font-display text-4xl font-semibold uppercase leading-[1.2] text-white md:text-5xl">
+        Mi formación
+      </h1>
+      <p class="mt-6 leading-relaxed text-smoke">
+        La preparación detrás de cada pieza: cursos y seminarios que respaldan
+        mi trabajo.
+      </p>
+    </div>
+
+    <!-- Certificados -->
+    <div class="grid gap-8 md:grid-cols-2">
+      {
+        certificates.map((cert) => (
+          <article data-aos="fade-up">
+            <a href={base + cert.src} target="_blank" rel="noopener" aria-label={`Ver certificado: ${cert.title}`}>
+              <img
+                src={base + cert.src}
+                alt={cert.alt}
+                class="w-full rounded-lg object-cover transition-transform duration-300 hover:scale-[1.02]"
+                loading="lazy"
+              />
+            </a>
+            <h3 class="mt-4 font-display text-xl uppercase leading-snug text-white">
+              {cert.title}
+            </h3>
+            <p class="mt-1 text-smoke">{cert.detail}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

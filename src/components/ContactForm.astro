@@ -1,9 +1,57 @@
-<section id="contacto" style="padding: 60px 20px;">
-  <h2 data-aos="fade-up" style="color: #fff; text-align: center;">Contacto</h2>
-  <form action="" method="POST" data-aos="fade-up" style="max-width: 600px; margin: 40px auto 0; display: flex; flex-direction: column; gap: 15px;">
-    <input type="text" name="name" placeholder="Tu nombre" required style="padding: 10px; background-color: #111; border: 1px solid #333; color: #fff;" />
-    <input type="email" name="email" placeholder="Tu correo" required style="padding: 10px; background-color: #111; border: 1px solid #333; color: #fff;" />
-    <textarea name="message" placeholder="Tu mensaje" rows="5" required style="padding: 10px; background-color: #111; border: 1px solid #333; color: #fff;"></textarea>
-    <button type="submit" style="padding: 15px 30px; background-color: #fff; color: #000; font-weight: bold; border: none; cursor: pointer;">Enviar mensaje</button>
-  </form>
+<!-- Formulario de contacto: envía por mailto a erickmichele@outlook.com -->
+
+<section id="contacto" class="py-12 px-4">
+  <div class="mx-auto max-w-7xl">
+    <!-- Cabecera centrada estilo Haircut -->
+    <div class="mx-auto mb-12 max-w-[600px] text-center" data-aos="fade-up">
+      <p class="inline-block bg-ink px-4 py-1 font-display text-base uppercase tracking-wider text-brand">
+        Contacto
+      </p>
+      <h1 class="mt-4 font-display text-4xl font-semibold uppercase leading-[1.2] text-white md:text-5xl">
+        Agenda tu cita
+      </h1>
+      <p class="mt-4 text-smoke">
+        Escríbenos a
+        <a href="mailto:erickmichele@outlook.com" class="text-brand hover:underline">
+          erickmichele@outlook.com
+        </a>
+        o llena el formulario y te contactamos.
+      </p>
+    </div>
+
+    <form
+      action="mailto:erickmichele@outlook.com"
+      method="POST"
+      class="mx-auto max-w-xl space-y-4 bg-ink p-6 md:p-8"
+      data-aos="fade-up"
+    >
+      <input
+        type="text"
+        name="nombre"
+        placeholder="Tu nombre"
+        required
+        class="w-full border border-white/10 bg-black px-4 py-3 text-white placeholder:text-smoke focus:outline-none focus:ring-2 focus:ring-brand"
+      />
+      <input
+        type="email"
+        name="email"
+        placeholder="Tu correo electrónico"
+        required
+        class="w-full border border-white/10 bg-black px-4 py-3 text-white placeholder:text-smoke focus:outline-none focus:ring-2 focus:ring-brand"
+      />
+      <textarea
+        name="mensaje"
+        placeholder="Escribe tu mensaje..."
+        rows="5"
+        required
+        class="w-full border border-white/10 bg-black px-4 py-3 text-white placeholder:text-smoke focus:outline-none focus:ring-2 focus:ring-brand"
+      ></textarea>
+      <button
+        type="submit"
+        class="w-full bg-brand py-3 font-display text-base font-semibold uppercase tracking-wide text-white transition-colors hover:bg-[#c81212]"
+      >
+        Enviar
+      </button>
+    </form>
+  </div>
 </section>
